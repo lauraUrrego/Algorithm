@@ -8,8 +8,8 @@ public class ServicePuzzleQ {
 	static Stack<Position> invalidPos= new Stack<Position>();
 	
 	
-	
-	static void imprimirMatriz(String[][] matriz) {
+	// print console the matrix 1 is queen  
+	static void printMatriz(String[][] matriz) {
         for (int x = 0; x < matriz.length; x++) {
             System.out.print("|");
             for (int y = 0; y < matriz[x].length; y++) {
@@ -23,6 +23,8 @@ public class ServicePuzzleQ {
         System.out.println("------------------------------");
     }
 	
+	//Verify the if position is correct, avoid the exception  
+	//index of bound
 	public static boolean verifyPos(String[][] matriz ,int i, int j) {
 		if(i<0 || i>=matriz.length || j<0 || j>=matriz.length) {
 			return false;
@@ -30,37 +32,33 @@ public class ServicePuzzleQ {
 		return true;
 	}
 	
+	//principal method, recursive and iterative
 	static boolean puzzel(String [][] matriz, int i, int j,int N) {
 		
+		//find solution
 		if (position.size()==N) {
-			imprimirMatriz(matriz);
+			printMatriz(matriz);
 			return true;
 		}
+		
 		if (!verifyPos(matriz,i, j)) {
 			return false;
 		}		
-		//if(invalidPos.contains(new Position(i, j))) {							
-		//	return puzzel(matriz,i,j+1,N);			
-		//}else {
-			for (int k=0;k<N;k++) {
-				
-				if(invalidPos.contains(new Position(i, k)))
-					continue;
+	
+		//iterate columns 
+		for (int k=0;k<N;k++) {				
+			if(invalidPos.contains(new Position(i, k)))
+				continue;
 					
-				position.add(new Position(i, k));
-				matriz[i][k]="1";
-				markAdj(i,k,N);			
+			position.add(new Position(i, k));
+			matriz[i][k]="1";
+			markAdj(i,k,N);			
 				
-				if(!puzzel(matriz,i+1,0,N)) {
-					position.remove(new Position(i, k));
-					desMarkAdj(i, k);
-					matriz[i][k]="0";					
-				}
-		//	}
-			
-			
-			
-						
+			if(!puzzel(matriz,i+1,0,N)) {
+				position.remove(new Position(i, k));
+				desMarkAdj(i, k);
+				matriz[i][k]="0";					
+			}								
 		}	
 		
 		return false;
