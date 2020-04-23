@@ -3,7 +3,7 @@ package com.searchAlgorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchA {
+public class BinarySearch {
 
 	
 	

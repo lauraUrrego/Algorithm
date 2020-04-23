@@ -16,14 +16,14 @@ public class Backtraking {
 	static LinkedList<Position> path = new LinkedList<Position>();
 		
 	public static boolean isValid(int x, int y) {
-		if(x<0 || x>=maze[x].length || y<0 || y>=maze.length) {
+		if(x<0 || x>maze.length || y<0 || y>=maze.length) {
 			return false;
 		}
 		return true;
 	}
 	
 	public static void main(String[] args) {
-		Position pos = new Position(0,3);		
+		Position pos = new Position(2,3);		
 		path.push(pos);
 		
 		
