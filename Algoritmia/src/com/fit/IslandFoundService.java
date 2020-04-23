@@ -2,7 +2,7 @@ package com.fit;
 
 import java.util.LinkedList;
 
-public class Service {
+public class IslandFoundService {
 	
 	static int[][] islandGrid= {
 			{1,1,1,1,0},

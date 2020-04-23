@@ -24,6 +24,19 @@ public class Position {
 	public void setJ(int j) {
 		this.j = j;
 	}
+	
+	 public boolean estaEnLaColumnaOFila(Position Position) {
+	        if (j == Position.j || i == Position.i) {
+	            return true;
+	        }
+	        return false;
+	    }
+	    public boolean estaEnLasDiagonal(Position Position) {
+	        if (i - j == (Position.i - Position.j) || i + j == (Position.i + Position.j)) {
+	            return true;
+	        }
+	        return false;
+	    }
 
 	@Override
 	public int hashCode() {
@@ -49,6 +62,13 @@ public class Position {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Position [i=" + i + ", j=" + j + "]";
+	}
+	
+	
 	
 	
 }
